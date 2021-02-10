@@ -16,17 +16,22 @@ class Postpage extends StatefulWidget {
 }
 
 class _PostpageState extends State<Postpage> {
-//   var queryParameters = {
-//   'state': 'Andhra Pradesh',
-//   'district': 'Chittor',
-// };
   // final HttpService httpService = HttpService();
   final String postUrl =
       "https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070?api-key=579b464db66ec23bdd00000133f585e2c6a244007be46a15bdf9ecf0&format=json&offset=0&limit=100";
+  String s = "Andhra Pradesh";
+  String d = "Chittor";
   List<Post> templist;
   Future<List<Post>> getPosts() async {
+    // Map<String, String> queryParams = {"state": "Maharashtra"};
+    // String queryString = Uri(queryParameters: queryParams).query;
+    String queryStringState = "filters[state]=" + s;
+    String queryStringDistrict = "filters[district]=" + d;
+    var requestUrl =
+        postUrl + '&' + queryStringState + '&' + queryStringDistrict;
+
     List<Post> list;
-    Response res = await get(postUrl);
+    Response res = await get(requestUrl);
     print(res.statusCode);
     // print(res.body);
     if (res.statusCode == 200) {
