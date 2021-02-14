@@ -22,6 +22,7 @@ class _PostpageState extends State<Postpage> {
   String s = "Andhra Pradesh";
   String d = "Chittor";
   List<Post> templist;
+  String commo = "";
   Future<List<Post>> getPosts() async {
     // Map<String, String> queryParams = {"state": "Maharashtra"};
     // String queryString = Uri(queryParameters: queryParams).query;
